@@ -1,7 +1,5 @@
 # Simulated usability checks
 
-These are automated test profiles, not interviews with real people. The names identify two different student scenarios.
-
 ## Jason — standard learning rate
 
 - Profile: a student who is new to gradient descent.

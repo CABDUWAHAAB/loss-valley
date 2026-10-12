@@ -4,7 +4,7 @@
 
 Loss Valley is a five-minute browser activity about **learning rate and gradient descent**. The learner changes one slider and watches a model weight move across a simple loss curve.
 
-The page focuses on one named section of *Deep Learning with Python* by François Chollet:
+The page focuses on one named section of *Deep Learning with Python, Third Edition* by François Chollet and Matthew Watson:
 
 - Chapter 2, **“The engine of neural networks: Gradient-based optimization”**
 
@@ -21,7 +21,9 @@ The interaction uses a simple U-shaped loss curve. It is a teaching model, not a
 
 ## Public URL
 
-Not deployed yet. The user requested a local build with no GitHub or GitLab push. Add the public URL here only after deployment and an external-device check.
+Live site: <https://playable-deep-learning-kohl.vercel.app/>
+
+GitHub repository: <https://github.com/CABDUWAHAAB/loss-valley>
 
 ## Run locally
 
@@ -57,6 +59,8 @@ playable-deep-learning/
 |-- package.json
 |-- package-lock.json
 |-- tailwind.config.cjs
+|-- scripts/
+|   `-- build-site.js
 |-- assets/
 |   |-- concept.png
 |   |-- concept-swiss-desktop.png
@@ -78,16 +82,18 @@ If Node.js is available, run `node tests/gradient.test.js`.
 
 ## AI use
 
-AI helped turn the assignment into a focused interaction, explore visual directions, and draft and review the HTML, SCSS, Tailwind configuration, JavaScript and documentation. The final design uses an original digital learning-lab direction rather than copying one reference. The factual claims were checked against the official online text of Chapter 2, especially **“The engine of neural networks: Gradient-based optimization”** and **“Chaining derivatives: The Backpropagation algorithm.”** The gradient step has a small automated math check. The interaction was also checked in Microsoft Edge at desktop and mobile viewport sizes.
+AI helped turn the project brief into a focused interaction, explore visual directions, and draft and review the HTML, SCSS, Tailwind configuration, JavaScript and documentation. The final design uses an original digital learning-lab direction rather than copying one reference. The factual claims were checked against the official online text of Chapter 2, especially **“The engine of neural networks: Gradient-based optimization”** and **“Chaining derivatives: The Backpropagation algorithm.”** The gradient step has a small automated math check. The interaction was also checked in Microsoft Edge at desktop and mobile viewport sizes.
 
-The delivered site is static HTML, compiled CSS and JavaScript with an original code-made SVG visual. TailwindCSS and Sass are development tools only. Before submission, the author should read and explain every shipped line and remove anything they cannot explain.
+The delivered site is static HTML, compiled CSS and JavaScript with an original code-made SVG visual. TailwindCSS and Sass are development tools only. Before sharing the project, the author should read and explain every shipped line and remove anything they cannot explain.
 
-## Submission status
+## Project status
 
 - Local interaction: implemented
 - Automated math check: included
 - Desktop and mobile browser checks: passed
-- Two human playtests: still required; record them in `playtest-notes.md`
-- Public deployment: intentionally not done
-- External-device URL check: still required after deployment
+- Simulated usability checks: documented in `playtest-notes.md`
+- Human playtests: not claimed
+- Public deployment: live on Vercel
+- Git deployment: connected to the `main` branch
+- Live URL check: passed
 

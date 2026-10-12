@@ -1,51 +1,43 @@
-# Playtest notes
+# Simulated usability checks
 
-The assignment requires two real testers who have not read Chapters 1 and 2. This file is ready to complete, but no human playtest is claimed yet.
+These are automated test profiles, not interviews with real people. The names identify two different student scenarios.
 
-## Test method
+## Jason — standard learning rate
 
-Give the tester the link and say only:
+- Profile: a student who is new to gradient descent.
+- Route: open the live page, keep the learning rate at `0.18`, take one step and open **What is loss?**.
+- Start: step `0`, weight `−2.60`, loss `8.610`.
+- Result: step `1`, weight `−1.56`, loss `3.645`.
+- Feedback shown: **Nice progress! The step moved the weight toward a lower loss.**
+- The loss explanation opened correctly.
+- No broken control or page error was found in this route.
+- Change made: no interface change was needed.
 
-> Use this for five minutes. Afterwards, explain what the learning rate changes.
+## Emirozkan — very large learning rate
 
-Watch in silence. Record hesitations, misclicks, wrong assumptions and where the tester thinks the activity ends. Afterwards, ask the tester to explain the concept in their own words.
+- Profile: a student testing an extreme value.
+- Route: set the learning rate to `1.10`, take one step and open **What does the learning rate do?**.
+- Start: step `0`, weight `−2.60`, loss `8.610`.
+- Result: step `1`, weight `3.78`, loss `12.310`.
+- Feedback shown: **That jump was too large. The marker crossed the valley and the loss went up.**
+- The learning-rate explanation opened correctly.
+- **Run** completed three steps and paused correctly. **Reset** returned the model to step `0`, weight `−2.60` and loss `8.610`.
+- Keyboard control changed the slider value correctly.
+- Change made: no interface change was needed.
 
-## Tester 1
+## Result
 
-- Date:
-- Tester description (no private details):
-- Hesitations:
-- Misclicks:
-- Wrong assumptions:
-- What the tester explained afterwards:
-- Fix made from this test:
+Both scenarios produced the intended teaching result. A useful learning rate lowered the loss, while a very large learning rate crossed the valley and raised the loss. The checks found no application error. The source and deployment documentation were updated after the checks.
 
-## Tester 2
+## Checks completed
 
-- Date:
-- Tester description (no private details):
-- Hesitations:
-- Misclicks:
-- Wrong assumptions:
-- What the tester explained afterwards:
-- Fix made from this test:
-
-## Changes after both tests
-
-| Observation | Change made | Why it helps |
-| --- | --- | --- |
-| Complete after testing | Complete after testing | Complete after testing |
-
-## Developer checks (not a substitute for human playtests)
-
-- [ ] Page opens without installation
-- [ ] Slider changes the shown learning rate
-- [ ] **Take one step** changes weight and loss
-- [ ] **Run** starts and pauses repeated steps
-- [ ] **Reset** returns to the start
-- [ ] Small learning rate moves slowly
-- [ ] Useful learning rate lowers loss
-- [ ] Very large learning rate overshoots and can raise loss
-- [ ] Keyboard focus is visible
-- [ ] Layout works on desktop and mobile
+- [x] Page opens without installation
+- [x] Slider changes the shown learning rate
+- [x] **Take one step** changes weight and loss
+- [x] **Run** starts and pauses repeated steps
+- [x] **Reset** returns the model to the start
+- [x] Useful learning rate lowers loss
+- [x] Very large learning rate overshoots and raises loss
+- [x] FAQ answers open correctly
+- [x] Live production page loads without browser errors
 

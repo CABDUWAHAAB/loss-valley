@@ -1,0 +1,542 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .loss-lab {
+    @apply min-h-screen overflow-x-hidden bg-ivory font-sans text-navy antialiased;
+  }
+
+  .site-header {
+    @apply flex w-full justify-center border-b border-navy/15 bg-ivory px-5;
+
+    &__inner {
+      @apply flex min-h-[72px] w-full max-w-[1480px] flex-wrap items-center justify-between gap-5;
+    }
+
+    &__brand {
+      @apply flex items-center gap-3 text-base font-bold tracking-[-0.02em] text-navy no-underline transition-colors hover:text-violet focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-peach;
+    }
+
+    &__brand-mark {
+      @apply h-3 w-3 rounded-full bg-peach;
+    }
+
+    &__toggle {
+      @apply flex h-11 w-11 flex-col items-center justify-center gap-2 border border-navy/20 bg-transparent transition-colors hover:border-violet hover:bg-violet/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-peach lg:hidden;
+    }
+
+    &__toggle-line {
+      @apply block h-px w-5 bg-navy;
+    }
+
+    &__note {
+      @apply hidden font-mono text-[0.68rem] font-medium uppercase tracking-[0.18em] text-slate lg:block;
+    }
+  }
+
+  .site-nav {
+    @apply order-last hidden w-full flex-col border-t border-navy/15 lg:order-none lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-9 lg:border-0;
+
+    &--open {
+      @apply flex;
+    }
+
+    &__link {
+      @apply border-b border-navy/10 py-4 text-sm font-semibold text-navy no-underline transition-colors last:border-0 hover:text-violet focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-peach lg:border-0 lg:py-0;
+    }
+  }
+
+  .learning-page {
+    @apply flex w-full flex-col items-center;
+
+    &__hero {
+      @apply flex w-full max-w-[1480px] flex-col gap-9 px-5 py-10 sm:py-14 lg:px-10 lg:py-16;
+    }
+
+    &__intro {
+      @apply flex w-full flex-col gap-7 lg:flex-row lg:items-end lg:justify-between;
+    }
+
+    &__heading {
+      @apply flex max-w-[760px] flex-1 flex-col gap-4;
+    }
+
+    &__chapter {
+      @apply font-mono text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-peach-dark;
+    }
+
+    &__title {
+      @apply text-[clamp(3.2rem,7vw,7.25rem)] font-black leading-[0.84] tracking-[-0.075em] text-navy;
+    }
+
+    &__title-accent {
+      @apply block font-medium text-violet;
+    }
+
+    &__summary {
+      @apply max-w-md text-lg font-medium leading-relaxed text-slate lg:self-center;
+    }
+
+    &__motif {
+      @apply hidden w-48 shrink-0 flex-col gap-2 border-l border-navy/15 pl-6 xl:flex;
+    }
+
+    &__motif-line {
+      @apply h-16 w-full fill-none stroke-navy/40 stroke-[1.5px];
+    }
+
+    &__motif-copy {
+      @apply font-mono text-[0.62rem] uppercase tracking-[0.18em] text-slate;
+    }
+  }
+
+  .workbench {
+    @apply flex w-full flex-col overflow-hidden rounded-[1.25rem] bg-navy text-ivory shadow-lab;
+
+    &__header {
+      @apply flex min-h-[72px] items-center justify-between gap-5 border-b border-white/10 px-5 py-4 sm:px-7;
+    }
+
+    &__identity {
+      @apply flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-5;
+    }
+
+    &__eyebrow {
+      @apply font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-acid;
+    }
+
+    &__name {
+      @apply text-sm font-medium text-white/70;
+    }
+
+    &__state {
+      @apply flex shrink-0 items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-white/70;
+    }
+
+    &__state-dot {
+      @apply h-2 w-2 rounded-full bg-acid shadow-[0_0_0_5px_rgba(216,255,114,0.12)];
+    }
+
+    &__body {
+      @apply flex min-w-0 flex-col xl:flex-row;
+    }
+  }
+
+  .loss-chart {
+    @apply flex min-w-0 flex-1 flex-col;
+
+    &__header {
+      @apply flex flex-col gap-5 border-b border-white/10 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7;
+    }
+
+    &__heading {
+      @apply flex items-end gap-3;
+    }
+
+    &__kicker {
+      @apply hidden font-mono text-[0.62rem] uppercase tracking-[0.18em] text-white/45 sm:block;
+    }
+
+    &__title {
+      @apply text-2xl font-semibold tracking-[-0.035em] text-white;
+    }
+
+    &__formula {
+      @apply font-serif font-normal italic text-violet-light;
+    }
+
+    &__canvas {
+      @apply flex min-h-[360px] flex-1 items-center justify-center px-2 py-5 sm:min-h-[520px] sm:px-6 xl:min-h-[600px];
+    }
+
+    &__svg {
+      @apply block h-auto max-h-[620px] w-full;
+    }
+
+    &__background {
+      @apply fill-navy;
+    }
+
+    &__grid-line {
+      @apply fill-none stroke-white/5 stroke-[1px];
+    }
+
+    &__axis {
+      @apply stroke-white/35 stroke-[1.5px];
+    }
+
+    &__axis-label,
+    &__minimum-label {
+      @apply fill-white/50 font-mono text-sm font-medium;
+    }
+
+    &__minimum-label {
+      @apply fill-acid text-xs;
+    }
+
+    &__curve {
+      @apply animate-curve-draw fill-none stroke-violet-light stroke-[4px];
+      filter: drop-shadow(0 0 10px rgba(120, 104, 255, 0.35));
+      stroke-dasharray: 1200;
+    }
+
+    &__travel-path {
+      @apply fill-none stroke-white/55 stroke-[5px];
+      stroke-dasharray: 2 13;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    &__step-arrow {
+      @apply stroke-peach stroke-[4px] opacity-0 transition-opacity;
+
+      &--visible {
+        @apply opacity-100;
+      }
+    }
+
+    &__arrow-head {
+      @apply fill-peach;
+    }
+
+    &__minimum-ring {
+      @apply fill-navy stroke-acid stroke-[3px];
+    }
+
+    &__minimum-dot {
+      @apply fill-acid;
+    }
+
+    &__marker-halo {
+      @apply animate-marker-pulse fill-acid/20;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    &__current-dot {
+      @apply fill-acid stroke-navy stroke-[4px];
+      filter: drop-shadow(0 0 8px rgba(216, 255, 114, 0.65));
+    }
+
+    &__current-marker {
+      transition: transform 360ms cubic-bezier(0.2, 0.75, 0.25, 1);
+    }
+
+    &__footer {
+      @apply flex flex-col gap-3 border-t border-white/10 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7;
+    }
+
+    &__legend {
+      @apply flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-white/50;
+    }
+
+    &__legend-item {
+      @apply flex items-center gap-2;
+    }
+
+    &__legend-dot {
+      @apply h-2 w-2 rounded-full;
+
+      &--current {
+        @apply bg-acid;
+      }
+
+      &--target {
+        @apply border border-acid bg-transparent;
+      }
+    }
+
+    &__legend-line {
+      @apply w-5 border-t-2 border-dotted border-white/60;
+    }
+
+    &__status-copy {
+      @apply max-w-sm text-xs leading-relaxed text-white/55 sm:text-right;
+    }
+  }
+
+  .metric-strip {
+    @apply flex overflow-hidden rounded-md border border-white/15 bg-white/[0.03];
+
+    &__item {
+      @apply flex min-w-[78px] flex-col gap-1 border-r border-white/10 px-3 py-2 last:border-0;
+    }
+
+    &__label {
+      @apply font-mono text-[0.58rem] uppercase tracking-[0.13em] text-white/45;
+    }
+
+    &__value {
+      @apply font-mono text-sm font-semibold tabular-nums text-white;
+    }
+  }
+
+  .learning-console {
+    @apply flex w-full shrink-0 flex-col gap-7 border-t border-white/10 bg-white/[0.025] px-5 py-7 sm:px-7 xl:w-[370px] xl:border-l xl:border-t-0;
+
+    &__heading {
+      @apply flex flex-col gap-3;
+    }
+
+    &__eyebrow {
+      @apply font-mono text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-peach;
+    }
+
+    &__title {
+      @apply text-3xl font-semibold leading-tight tracking-[-0.04em] text-white;
+    }
+
+    &__intro {
+      @apply text-sm leading-relaxed text-white/55;
+    }
+
+    &__control {
+      @apply flex flex-col gap-3 border-y border-white/10 py-6;
+    }
+
+    &__label-row {
+      @apply flex items-end justify-between gap-5;
+    }
+
+    &__label {
+      @apply text-sm font-semibold text-white;
+    }
+
+    &__output {
+      @apply rounded border border-white/20 px-3 py-1 font-mono text-lg font-semibold tabular-nums text-white;
+    }
+
+    &__range {
+      @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/15 accent-acid focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-peach;
+    }
+
+    &__range::-webkit-slider-thumb {
+      appearance: none;
+      @apply h-5 w-5 rounded-full border-0 bg-acid shadow-[0_0_0_5px_rgba(216,255,114,0.1)];
+    }
+
+    &__range::-moz-range-thumb {
+      @apply h-5 w-5 rounded-full border-0 bg-acid shadow-[0_0_0_5px_rgba(216,255,114,0.1)];
+    }
+
+    &__range-labels {
+      @apply flex items-center justify-between gap-4 font-mono text-[0.58rem] uppercase tracking-[0.08em] text-white/40;
+    }
+
+    &__actions {
+      @apply flex flex-col gap-2;
+    }
+
+    &__button {
+      @apply flex min-h-12 w-full items-center justify-between rounded-md border border-white/20 bg-transparent px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/45 hover:bg-white/[0.06] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peach;
+
+      &--primary {
+        @apply min-h-14 border-peach bg-peach text-navy hover:border-acid hover:bg-acid;
+      }
+
+      &--run {
+        @apply text-white;
+      }
+
+      &--quiet {
+        @apply text-white/65;
+      }
+    }
+
+    &__button-icon {
+      @apply h-5 w-5 fill-none stroke-current stroke-2;
+    }
+
+    &__feedback {
+      @apply flex flex-col gap-2 rounded-md border border-white/10 bg-white/[0.04] px-4 py-4 transition-colors;
+
+      &--success {
+        @apply border-acid/35 bg-acid/10;
+      }
+
+      &--warning {
+        @apply border-peach/60 bg-peach/10;
+      }
+
+      &--slow {
+        @apply border-violet-light/45 bg-violet/10;
+      }
+    }
+
+    &__feedback-title {
+      @apply text-sm font-semibold text-white;
+    }
+
+    &__feedback-copy {
+      @apply text-xs leading-relaxed text-white/55;
+    }
+
+    &__source {
+      @apply text-[0.68rem] leading-relaxed text-white/40;
+    }
+
+    &__source-link {
+      @apply text-white/65 underline decoration-white/25 underline-offset-4 transition-colors hover:text-acid;
+    }
+  }
+
+  .lesson {
+    @apply flex w-full max-w-[1480px] flex-col gap-9 border-t border-navy/15 px-5 py-14 lg:px-10 lg:py-20;
+
+    &__header {
+      @apply flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between;
+    }
+
+    &__heading {
+      @apply flex flex-col gap-3;
+    }
+
+    &__eyebrow,
+    &__source {
+      @apply font-mono text-[0.65rem] uppercase tracking-[0.18em] text-peach-dark;
+    }
+
+    &__title {
+      @apply text-[clamp(2.7rem,5vw,5rem)] font-bold leading-none tracking-[-0.06em];
+    }
+
+    &__intro {
+      @apply max-w-lg text-lg leading-relaxed text-slate;
+    }
+
+    &__steps {
+      @apply flex flex-col border-y border-navy/15 lg:flex-row;
+    }
+
+    &__step {
+      @apply flex min-w-0 flex-1 items-start gap-5 border-b border-navy/15 py-7 last:border-0 lg:border-b-0 lg:border-r lg:px-7 lg:first:pl-0 lg:last:border-0 lg:last:pr-0;
+    }
+
+    &__number {
+      @apply font-mono text-xs font-semibold text-violet;
+    }
+
+    &__copy {
+      @apply flex min-w-0 flex-col gap-2;
+    }
+
+    &__step-title {
+      @apply text-xl font-semibold tracking-[-0.025em];
+    }
+
+    &__step-text {
+      @apply text-sm leading-relaxed text-slate;
+    }
+
+    &__source {
+      @apply normal-case tracking-normal text-slate;
+    }
+
+    &__source-link {
+      @apply text-violet underline decoration-violet/30 underline-offset-4 hover:text-navy;
+    }
+  }
+
+  .faq {
+    @apply flex w-full max-w-[1480px] flex-col gap-9 border-t border-navy/15 px-5 py-14 lg:px-10 lg:py-20;
+
+    &__header {
+      @apply flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between;
+    }
+
+    &__heading {
+      @apply flex flex-col gap-3;
+    }
+
+    &__eyebrow {
+      @apply font-mono text-[0.65rem] uppercase tracking-[0.18em] text-peach-dark;
+    }
+
+    &__title {
+      @apply text-[clamp(2.7rem,5vw,5rem)] font-bold leading-none tracking-[-0.06em];
+    }
+
+    &__intro {
+      @apply max-w-md text-base leading-relaxed text-slate;
+    }
+
+    &__list {
+      @apply flex flex-col border-b border-navy/15;
+    }
+
+    &__item {
+      @apply flex flex-col border-t border-navy/15 transition-colors;
+
+      &--open {
+        @apply bg-violet/[0.045];
+      }
+    }
+
+    &__item-heading {
+      @apply flex;
+    }
+
+    &__question {
+      @apply flex w-full items-center justify-between gap-5 bg-transparent py-5 text-left text-lg font-semibold tracking-[-0.02em] transition-colors hover:text-violet focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-peach;
+    }
+
+    &__symbol {
+      @apply relative h-5 w-5 shrink-0 rounded-full border border-navy/30 before:absolute before:left-1/2 before:top-1/2 before:h-px before:w-2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-navy after:absolute after:left-1/2 after:top-1/2 after:h-2 after:w-px after:-translate-x-1/2 after:-translate-y-1/2 after:bg-navy after:transition-transform;
+    }
+
+    &__item--open &__symbol::after {
+      @apply rotate-90;
+    }
+
+    &__answer {
+      @apply max-h-0 overflow-hidden opacity-0 transition-all duration-300;
+    }
+
+    &__item--open &__answer {
+      @apply max-h-48 opacity-100;
+    }
+
+    &__answer-copy {
+      @apply max-w-3xl pb-6 text-sm leading-relaxed text-slate;
+    }
+
+    &__source {
+      @apply max-w-4xl text-xs leading-relaxed text-slate;
+    }
+
+    &__source-link {
+      @apply text-violet underline decoration-violet/30 underline-offset-4 hover:text-navy;
+    }
+  }
+
+  .site-footer {
+    @apply flex w-full flex-col items-start justify-between gap-3 border-t border-navy/15 bg-navy px-5 py-7 text-ivory sm:flex-row sm:items-center lg:px-10;
+
+    &__copy {
+      @apply text-xs leading-relaxed text-white/65;
+    }
+
+    &__note {
+      @apply font-mono text-[0.6rem] uppercase tracking-[0.17em] text-acid;
+    }
+  }
+
+  .reveal {
+    @apply animate-rise;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loss-chart__curve,
+  .loss-chart__marker-halo,
+  .reveal {
+    animation: none;
+  }
+
+  .loss-chart__current-marker,
+  .faq__answer,
+  .learning-console__button {
+    transition: none;
+  }
+}

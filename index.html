@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A playful explanation of learning rate and gradient descent." />
+    <title>Loss Valley</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="dist/styles.css" />
+  </head>
+  <body class="loss-lab">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="#explore" aria-label="Loss Valley home">
+          <span class="site-header__brand-mark" aria-hidden="true"></span>
+          <span>Loss Valley</span>
+        </a>
+        <button class="site-header__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="site-header__toggle-line"></span>
+          <span class="site-header__toggle-line"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a class="site-nav__link" href="#explore">Experiment</a>
+          <a class="site-nav__link" href="#learn">How it works</a>
+          <a class="site-nav__link" href="#faq">Questions</a>
+        </nav>
+        <p class="site-header__note">Chapter 02 · Optimization</p>
+      </div>
+    </header>
+
+    <main class="learning-page">
+      <section class="learning-page__hero reveal" id="explore" aria-labelledby="challenge-title">
+        <div class="learning-page__intro">
+          <div class="learning-page__heading">
+            <p class="learning-page__chapter">Interactive learning lab · 01</p>
+            <h1 class="learning-page__title" id="challenge-title">Find the step <span class="learning-page__title-accent">that learns.</span></h1>
+          </div>
+          <p class="learning-page__summary">Gradient descent learns by taking steps. Change the learning rate and watch whether the loss becomes lower or higher.</p>
+          <div class="learning-page__motif" aria-hidden="true">
+            <svg class="learning-page__motif-line" viewBox="0 0 180 72"><path d="M4 59C31 58 39 24 65 34s34 35 56 6 29-24 55-32" /></svg>
+            <span class="learning-page__motif-copy">Try · observe · understand</span>
+          </div>
+        </div>
+
+        <section class="workbench" aria-label="Gradient descent experiment">
+          <header class="workbench__header">
+            <div class="workbench__identity">
+              <span class="workbench__eyebrow">Live experiment</span>
+              <strong class="workbench__name">Loss curve / one weight</strong>
+            </div>
+            <span class="workbench__state"><i class="workbench__state-dot"></i><span id="status-label">Ready</span></span>
+          </header>
+
+          <div class="workbench__body">
+            <div class="loss-chart">
+              <div class="loss-chart__header">
+                <div class="loss-chart__heading">
+                  <span class="loss-chart__kicker">Model view</span>
+                  <h2 class="loss-chart__title">Loss <span class="loss-chart__formula">L(w)</span></h2>
+                </div>
+                <dl class="metric-strip" aria-label="Current simulation values">
+                  <div class="metric-strip__item"><dt class="metric-strip__label">Step</dt><dd class="metric-strip__value" id="step-value">0</dd></div>
+                  <div class="metric-strip__item"><dt class="metric-strip__label">Weight</dt><dd class="metric-strip__value" id="weight-value">−2.60</dd></div>
+                  <div class="metric-strip__item"><dt class="metric-strip__label">Loss</dt><dd class="metric-strip__value" id="loss-value">8.610</dd></div>
+                </dl>
+              </div>
+
+              <div class="loss-chart__canvas">
+                <svg class="loss-chart__svg" id="loss-plot" viewBox="0 0 760 520" role="img" aria-labelledby="plot-title plot-description">
+                  <title id="plot-title">Loss curve and current weight</title>
+                  <desc id="plot-description">A curved loss valley with a weight moving toward or away from the minimum.</desc>
+                  <defs>
+                    <pattern id="small-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="loss-chart__grid-line" /></pattern>
+                    <marker id="arrowhead" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" class="loss-chart__arrow-head" /></marker>
+                  </defs>
+                  <rect class="loss-chart__background" width="760" height="520" />
+                  <rect class="loss-chart__grid" width="760" height="520" fill="url(#small-grid)" />
+                  <line class="loss-chart__axis" x1="70" y1="455" x2="710" y2="455" />
+                  <line class="loss-chart__axis" x1="70" y1="455" x2="70" y2="48" />
+                  <text class="loss-chart__axis-label" x="650" y="492">Weight</text>
+                  <text class="loss-chart__axis-label" x="28" y="42">Loss</text>
+                  <path id="loss-curve" class="loss-chart__curve" d="" />
+                  <polyline id="travel-path" class="loss-chart__travel-path" points="" />
+                  <line id="step-arrow" class="loss-chart__step-arrow" marker-end="url(#arrowhead)" />
+                  <g id="minimum-marker" aria-hidden="true"><circle class="loss-chart__minimum-ring" r="16" /><circle class="loss-chart__minimum-dot" r="7" /><text class="loss-chart__minimum-label" text-anchor="middle" y="38">Minimum</text></g>
+                  <g id="current-marker" class="loss-chart__current-marker" aria-hidden="true"><circle class="loss-chart__marker-halo" r="22" /><circle class="loss-chart__current-dot" r="11" /></g>
+                </svg>
+              </div>
+
+              <div class="loss-chart__footer">
+                <div class="loss-chart__legend" aria-hidden="true">
+                  <span class="loss-chart__legend-item"><i class="loss-chart__legend-dot loss-chart__legend-dot--current"></i>Current weight</span>
+                  <span class="loss-chart__legend-item"><i class="loss-chart__legend-dot loss-chart__legend-dot--target"></i>Lowest loss</span>
+                  <span class="loss-chart__legend-item"><i class="loss-chart__legend-line"></i>Earlier steps</span>
+                </div>
+                <p class="loss-chart__status-copy" id="status-copy">Adjust the learning rate and take a step.</p>
+              </div>
+            </div>
+
+            <aside class="learning-console" aria-label="Experiment controls">
+              <div class="learning-console__heading">
+                <span class="learning-console__eyebrow">Your controls</span>
+                <h2 class="learning-console__title">Set the size of the next step.</h2>
+                <p class="learning-console__intro">Small steps learn slowly. A step that is too large can cross the valley.</p>
+              </div>
+
+              <div class="learning-console__control">
+                <div class="learning-console__label-row">
+                  <label class="learning-console__label" for="learning-rate">Learning rate</label>
+                  <output class="learning-console__output" id="learning-rate-value" for="learning-rate">0.18</output>
+                </div>
+                <input class="learning-console__range" id="learning-rate" type="range" min="0.01" max="1.10" step="0.01" value="0.18" />
+                <div class="learning-console__range-labels" aria-hidden="true"><span>0.01 · careful</span><span>1.10 · wild</span></div>
+              </div>
+
+              <div class="learning-console__actions">
+                <button class="learning-console__button learning-console__button--primary" id="step-button" type="button">
+                  <span>Take one step</span>
+                  <svg class="learning-console__button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l5 5-5 5" /></svg>
+                </button>
+                <button class="learning-console__button learning-console__button--run" id="run-button" type="button" aria-pressed="false"><span>Run</span><span aria-hidden="true">▶</span></button>
+                <button class="learning-console__button learning-console__button--quiet" id="reset-button" type="button"><span>Reset</span><span aria-hidden="true">↻</span></button>
+              </div>
+
+              <div class="learning-console__feedback" id="feedback" role="status" aria-live="polite">
+                <strong class="learning-console__feedback-title">Try one step.</strong>
+                <p class="learning-console__feedback-copy">Loss shows how wrong the model is. Lower loss is better. Change the learning rate, then watch the marker.</p>
+              </div>
+
+              <p class="learning-console__source">Based on <a class="learning-console__source-link" href="https://deeplearningwithpython.io/chapters/chapter02_mathematical-building-blocks/#the-engine-of-neural-networks-gradient-based-optimization">Chapter 2 · Gradient-based optimization</a>.</p>
+            </aside>
+          </div>
+        </section>
+      </section>
+
+      <section class="lesson reveal" id="learn" aria-labelledby="how-title">
+        <div class="lesson__header">
+          <div class="lesson__heading">
+            <p class="lesson__eyebrow">The learning loop</p>
+            <h2 class="lesson__title" id="how-title">How one step works</h2>
+          </div>
+          <p class="lesson__intro">The model checks its error, finds which way is worse, and moves the other way.</p>
+        </div>
+        <ol class="lesson__steps">
+          <li class="lesson__step"><span class="lesson__number">01</span><div class="lesson__copy"><h3 class="lesson__step-title">Measure the loss</h3><p class="lesson__step-text">The model makes an answer. Loss compares it with the correct answer. A lower number is better.</p></div></li>
+          <li class="lesson__step"><span class="lesson__number">02</span><div class="lesson__copy"><h3 class="lesson__step-title">Find the slope</h3><p class="lesson__step-text">The gradient shows how the loss changes. It points toward a higher loss.</p></div></li>
+          <li class="lesson__step"><span class="lesson__number">03</span><div class="lesson__copy"><h3 class="lesson__step-title">Move the weight</h3><p class="lesson__step-text">The model moves the other way. The learning rate decides how large the move is.</p></div></li>
+        </ol>
+        <p class="lesson__source">Source: <a class="lesson__source-link" href="https://deeplearningwithpython.io/chapters/chapter02_mathematical-building-blocks/#the-engine-of-neural-networks-gradient-based-optimization">Chapter 2 · “The engine of neural networks: Gradient-based optimization”</a>.</p>
+      </section>
+
+      <section class="faq reveal" id="faq" aria-labelledby="faq-title">
+        <div class="faq__header">
+          <div class="faq__heading">
+            <p class="faq__eyebrow">Questions people often ask</p>
+            <h2 class="faq__title" id="faq-title">Read the experiment</h2>
+          </div>
+          <p class="faq__intro">Open a question when a word or step is not clear.</p>
+        </div>
+        <div class="faq__list">
+          <article class="faq__item faq__item--open"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="true"><span>What is a weight?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">A weight is a number inside the model. It helps the model make an answer. Training changes weights so answers can improve.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>What is loss?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">Loss compares the model's answer with the correct answer. A low loss means the two answers are closer.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>What is a gradient?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">The gradient shows how the loss changes when a weight changes. It points toward a higher loss.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>Why move the other way?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">The model wants a lower loss. The gradient points higher, so the model moves in the opposite direction.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>What does the learning rate do?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">It sets the size of the update. A small rate is slow. A very large rate can jump past a good point.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>What happens in one training step?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">The model makes predictions and measures loss. Backpropagation finds gradients. The optimizer updates the weights.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>Why repeat the steps?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">One step is not enough. The training loop repeats with many groups of examples. Loss can become lower over time.</p></div></article>
+          <article class="faq__item"><h3 class="faq__item-heading"><button class="faq__question" type="button" aria-expanded="false"><span>Is this a full neural network?</span><span class="faq__symbol" aria-hidden="true"></span></button></h3><div class="faq__answer"><p class="faq__answer-copy">No. This experiment uses one weight and one simple curve. A real network can have many weights.</p></div></article>
+        </div>
+        <p class="faq__source">Sources: <a class="faq__source-link" href="https://deeplearningwithpython.io/chapters/chapter02_mathematical-building-blocks/#the-engine-of-neural-networks-gradient-based-optimization">Chapter 2 · Gradient-based optimization, stochastic gradient descent and backpropagation</a>.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="site-footer__copy">Based on <cite>Deep Learning with Python</cite> by François Chollet.</p>
+      <p class="site-footer__note">One idea · one experiment · your own steps</p>
+    </footer>
+    <script src="src/gradient.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>

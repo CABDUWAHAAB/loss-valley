@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:styles": "sass src/styles.scss build/tailwind-input.css --no-source-map && tailwindcss -i build/tailwind-input.css -o dist/styles.css --minify",
-    "build": "npm run build:styles",
+    "build": "npm run build:styles && node scripts/build-site.js",
     "test": "node tests/gradient.test.js",
     "check": "npm run build && npm test"
   },

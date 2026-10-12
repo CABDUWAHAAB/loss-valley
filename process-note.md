@@ -1,5 +1,7 @@
 # Process note
 
+**Author:** Abdi Abdikarim
+
 ## Concept choice
 
 I chose learning rate and gradient descent from Chapter 2, **“The engine of neural networks: Gradient-based optimization.”** This concept is easy to describe as a formula but harder to feel. The interaction turns the update into a visible movement across a loss curve. The learner changes only the learning rate, so the result of that choice stays clear.

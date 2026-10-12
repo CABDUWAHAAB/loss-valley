@@ -1,5 +1,7 @@
 # Loss Valley
 
+**Author:** Abdi Abdikarim
+
 Loss Valley is a five-minute browser activity about **learning rate and gradient descent**. The learner changes one slider and watches a model weight move across a simple loss curve.
 
 The page focuses on one named section of *Deep Learning with Python* by François Chollet:

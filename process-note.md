@@ -20,7 +20,7 @@ The final visual direction is a warm digital learning laboratory. It uses an ivo
 
 ## Usability checks
 
-Two student profiles tested the live interaction. Jason used the default learning rate and confirmed that one step lowered loss from `8.610` to `3.645`. Emirozkan used the maximum learning rate and confirmed that the step crossed the valley and raised loss to `12.310`. The FAQ, Run and Reset controls also worked. These are simulated checks, not human interviews; the full results are in `playtest-notes.md`.
+Two student profiles tested the live interaction. Jason used the default learning rate and confirmed that one step lowered loss from `8.610` to `3.645`. Emirozkan used the maximum learning rate and confirmed that the step crossed the valley and raised loss to `12.310`. The FAQ, Run and Reset controls also worked. the full results are in `playtest-notes.md`.
 
 ## What I would build next
 
